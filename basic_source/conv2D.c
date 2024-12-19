@@ -13,7 +13,7 @@ void conv2d(image_t input[IMAGE_ROWS][IMAGE_COLS],
                     sum += input[x + i][y + j] * kernel[i][j];
                 }
             }
-            output[x][y] = sum; // Store the result
+            output[x][y] = sum; // The result
         }
     }
 }
