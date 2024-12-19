@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('lineBuff_val_0_load_1', core.cpp:47) on array 'lineBuff.val[0]', core.cpp:13 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'lineBuff_val_0'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:30.862+0700" type="Warning"/>
+        <logs message="WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)&#xD;&#xA;   between 'load' operation ('lineBuff_val_0_load', core.cpp:47) on array 'lineBuff.val[0]', core.cpp:13 and 'store' operation (E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:729->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:863->core.cpp:35) of variable 'lineBuff_val_1_load', E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:729->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:863->core.cpp:35 on array 'lineBuff.val[0]', core.cpp:13." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:30.850+0700" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'lineBuff.val[1]' (core.cpp:13)." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:30.682+0700" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'lineBuff.val[2]' (core.cpp:13)." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:30.639+0700" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'lineBuff.val[0]' (core.cpp:13)." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:30.626+0700" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'lineBuff.val[1]' (core.cpp:13)." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:30.612+0700" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'lineBuff.val[2]' (core.cpp:13)." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:30.600+0700" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'lineBuff.val[0]' (core.cpp:13)." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:30.582+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'first_order_fixed_16::sin_cos_K0' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.123+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'second_order_float::sin_cos_K1' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.106+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::cos_K3' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.092+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'second_order_float::cos_K1' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.079+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_K2' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.068+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_cos_K0' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.054+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::cos_K2' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.041+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_K1' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.030+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'second_order_float::cos_K0' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.017+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'first_order_fixed_16::sin_cos_K1' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:26.006+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'second_order_float::sin_K2' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.994+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_cos_K2' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.982+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_K3' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.972+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'second_order_float::sin_cos_K0' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.962+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::cos_K0' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.952+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'second_order_float::sin_K0' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.941+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'second_order_float::cos_K2' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.930+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::cos_K4' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.919+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'second_order_float::sin_cos_K2' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.907+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_K4' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.896+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_cos_K1' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.885+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'second_order_float::sin_K1' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.874+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_K0' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.864+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_cos_K3' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.854+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::cos_K1' can not be recognized(UNKNOWN VARIABLE) in 'sincos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.842+0700" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Directive 'RESOURCE' for core 'ROM_1P_LUTRAM' cannot be applied: Variable 'fourth_order_double::sin_cos_K4' can not be recognized(UNKNOWN VARIABLE) in 'sin_or_cos_approximation'." projectName="conv2d" solutionName="solution1" date="2024-12-19T18:11:25.832+0700" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

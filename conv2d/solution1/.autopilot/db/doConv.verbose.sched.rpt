@@ -1,0 +1,506 @@
+
+
+================================================================
+== Vivado HLS Report for 'doConv'
+================================================================
+* Date:           Thu Dec 19 18:11:30 2024
+
+* Version:        2018.1 (Build 2188600 on Wed Apr 04 19:04:02 MDT 2018)
+* Project:        conv2d
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      8.46|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-------+-------+-------+-------+---------+
+    |    Latency    |    Interval   | Pipeline|
+    |  min  |  max  |  min  |  max  |   Type  |
+    +-------+-------+-------+-------+---------+
+    |  65808|  65808|  65808|  65808|   none  |
+    +-------+-------+-------+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+-------+-------+----------+-----------+-----------+-------+----------+
+        |             |    Latency    | Iteration|  Initiation Interval  |  Trip |          |
+        |  Loop Name  |  min  |  max  |  Latency |  achieved |   target  | Count | Pipelined|
+        +-------------+-------+-------+----------+-----------+-----------+-------+----------+
+        |- Loop 1     |  49156|  49156|         8|          3|          1|  16384|    yes   |
+        |- Loop 2     |  16640|  16640|       130|          -|          -|    128|    no    |
+        | + Loop 2.1  |    128|    128|         1|          -|          -|    128|    no    |
+        +-------------+-------+-------+----------+-----------+-----------+-------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 3, depth = 8
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 21
+* Pipeline : 1
+  Pipeline-0 : II = 3, D = 8, States = { 11 12 13 14 15 16 17 18 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / true
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	19  / (exitcond4)
+	12  / (!exitcond4)
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	11  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / (!exitcond1)
+21 --> 
+	21  / (!exitcond)
+	20  / (exitcond)
+
+* FSM state operations: 
+
+ <State 1> : 2.32ns
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%lineBuff_val_0 = alloca [128 x i8], align 1" [core.cpp:13]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%lineBuff_val_1 = alloca [128 x i8], align 1" [core.cpp:13]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%lineBuff_val_2 = alloca [128 x i8], align 1" [core.cpp:13]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%kernel_addr = getelementptr [9 x i8]* %kernel, i64 0, i64 0" [core.cpp:50]
+ST_1 : Operation 26 [2/2] (2.32ns)   --->   "%kernel_load = load i8* %kernel_addr, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+
+ <State 2> : 2.32ns
+ST_2 : Operation 27 [1/2] (2.32ns)   --->   "%kernel_load = load i8* %kernel_addr, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+ST_2 : Operation 28 [1/1] (0.00ns)   --->   "%kernel_addr_1 = getelementptr [9 x i8]* %kernel, i64 0, i64 1" [core.cpp:50]
+ST_2 : Operation 29 [2/2] (2.32ns)   --->   "%kernel_load_1 = load i8* %kernel_addr_1, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+
+ <State 3> : 2.32ns
+ST_3 : Operation 30 [1/2] (2.32ns)   --->   "%kernel_load_1 = load i8* %kernel_addr_1, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "%kernel_addr_2 = getelementptr [9 x i8]* %kernel, i64 0, i64 2" [core.cpp:50]
+ST_3 : Operation 32 [2/2] (2.32ns)   --->   "%kernel_load_2 = load i8* %kernel_addr_2, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+
+ <State 4> : 2.32ns
+ST_4 : Operation 33 [1/2] (2.32ns)   --->   "%kernel_load_2 = load i8* %kernel_addr_2, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+ST_4 : Operation 34 [1/1] (0.00ns)   --->   "%kernel_addr_3 = getelementptr [9 x i8]* %kernel, i64 0, i64 3" [core.cpp:50]
+ST_4 : Operation 35 [2/2] (2.32ns)   --->   "%kernel_load_3 = load i8* %kernel_addr_3, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+
+ <State 5> : 2.32ns
+ST_5 : Operation 36 [1/2] (2.32ns)   --->   "%kernel_load_3 = load i8* %kernel_addr_3, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+ST_5 : Operation 37 [1/1] (0.00ns)   --->   "%kernel_addr_4 = getelementptr [9 x i8]* %kernel, i64 0, i64 4" [core.cpp:50]
+ST_5 : Operation 38 [2/2] (2.32ns)   --->   "%kernel_load_4 = load i8* %kernel_addr_4, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+
+ <State 6> : 2.32ns
+ST_6 : Operation 39 [1/2] (2.32ns)   --->   "%kernel_load_4 = load i8* %kernel_addr_4, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+ST_6 : Operation 40 [1/1] (0.00ns)   --->   "%kernel_addr_5 = getelementptr [9 x i8]* %kernel, i64 0, i64 5" [core.cpp:50]
+ST_6 : Operation 41 [2/2] (2.32ns)   --->   "%kernel_load_5 = load i8* %kernel_addr_5, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+
+ <State 7> : 2.32ns
+ST_7 : Operation 42 [1/2] (2.32ns)   --->   "%kernel_load_5 = load i8* %kernel_addr_5, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+ST_7 : Operation 43 [1/1] (0.00ns)   --->   "%kernel_addr_6 = getelementptr [9 x i8]* %kernel, i64 0, i64 6" [core.cpp:50]
+ST_7 : Operation 44 [2/2] (2.32ns)   --->   "%kernel_load_6 = load i8* %kernel_addr_6, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+
+ <State 8> : 2.32ns
+ST_8 : Operation 45 [1/2] (2.32ns)   --->   "%kernel_load_6 = load i8* %kernel_addr_6, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+ST_8 : Operation 46 [1/1] (0.00ns)   --->   "%kernel_addr_7 = getelementptr [9 x i8]* %kernel, i64 0, i64 7" [core.cpp:50]
+ST_8 : Operation 47 [2/2] (2.32ns)   --->   "%kernel_load_7 = load i8* %kernel_addr_7, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+
+ <State 9> : 2.32ns
+ST_9 : Operation 48 [1/2] (2.32ns)   --->   "%kernel_load_7 = load i8* %kernel_addr_7, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+ST_9 : Operation 49 [1/1] (0.00ns)   --->   "%kernel_addr_8 = getelementptr [9 x i8]* %kernel, i64 0, i64 8" [core.cpp:50]
+ST_9 : Operation 50 [2/2] (2.32ns)   --->   "%kernel_load_8 = load i8* %kernel_addr_8, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+
+ <State 10> : 2.32ns
+ST_10 : Operation 51 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([16384 x i8]* %input_image) nounwind, !map !66"
+ST_10 : Operation 52 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([16384 x i8]* %output_image) nounwind, !map !72"
+ST_10 : Operation 53 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([9 x i8]* %kernel) nounwind, !map !76"
+ST_10 : Operation 54 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([7 x i8]* @doConv_str) nounwind"
+ST_10 : Operation 55 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32 0, [10 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str2, i32 0, i32 0, [9 x i8]* @p_str3, [1 x i8]* @p_str2, [1 x i8]* @p_str2, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str2, [1 x i8]* @p_str2) nounwind" [core.cpp:8]
+ST_10 : Operation 56 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecMemCore([9 x i8]* %kernel, [1 x i8]* @p_str6, [7 x i8]* @RAM_1P_str, [1 x i8]* @p_str6, i32 -1, [1 x i8]* @p_str6, [1 x i8]* @p_str6, [1 x i8]* @p_str6, [1 x i8]* @p_str6, [1 x i8]* @p_str6) nounwind"
+ST_10 : Operation 57 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface([9 x i8]* %kernel, [10 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str2, i32 0, i32 0, [11 x i8]* @p_str4, [1 x i8]* @p_str2, [1 x i8]* @p_str2, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str2, [1 x i8]* @p_str2) nounwind"
+ST_10 : Operation 58 [1/1] (0.00ns)   --->   "%rbegin_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([63 x i8]* @hls_KD_KD_LineBuffe) nounwind"
+ST_10 : Operation 59 [1/1] (0.00ns)   --->   "%rend_i = call i32 (...)* @_ssdm_op_SpecRegionEnd([63 x i8]* @hls_KD_KD_LineBuffe, i32 %rbegin_i) nounwind"
+ST_10 : Operation 60 [1/1] (0.00ns)   --->   "%tmp_2 = sext i8 %kernel_load to i16" [core.cpp:50]
+ST_10 : Operation 61 [1/1] (0.00ns)   --->   "%tmp_24_0_1 = sext i8 %kernel_load_1 to i16" [core.cpp:50]
+ST_10 : Operation 62 [1/1] (0.00ns)   --->   "%tmp_24_0_2 = sext i8 %kernel_load_2 to i16" [core.cpp:50]
+ST_10 : Operation 63 [1/1] (0.00ns)   --->   "%tmp_24_1 = sext i8 %kernel_load_3 to i16" [core.cpp:50]
+ST_10 : Operation 64 [1/1] (0.00ns)   --->   "%tmp_24_1_1 = sext i8 %kernel_load_4 to i16" [core.cpp:50]
+ST_10 : Operation 65 [1/1] (0.00ns)   --->   "%tmp_24_1_2 = sext i8 %kernel_load_5 to i16" [core.cpp:50]
+ST_10 : Operation 66 [1/1] (0.00ns)   --->   "%tmp_24_2 = sext i8 %kernel_load_6 to i16" [core.cpp:50]
+ST_10 : Operation 67 [1/1] (0.00ns)   --->   "%tmp_24_2_1 = sext i8 %kernel_load_7 to i16" [core.cpp:50]
+ST_10 : Operation 68 [1/2] (2.32ns)   --->   "%kernel_load_8 = load i8* %kernel_addr_8, align 1" [core.cpp:50]   --->   Core 42 'RAM_1P' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 1> <Width = 8> <Depth = 9> <RAM>
+ST_10 : Operation 69 [1/1] (0.00ns)   --->   "%tmp_24_2_2 = sext i8 %kernel_load_8 to i16" [core.cpp:50]
+ST_10 : Operation 70 [1/1] (1.76ns)   --->   "br label %1" [core.cpp:28]
+
+ <State 11> : 5.33ns
+ST_11 : Operation 71 [1/1] (0.00ns)   --->   "%idxpixel = phi i15 [ 0, %0 ], [ %idxpixel_1, %._crit_edge.i.i.0_ifconv ]"
+ST_11 : Operation 72 [1/1] (0.00ns)   --->   "%valOutput = phi i16 [ 0, %0 ], [ %valOutput_2, %._crit_edge.i.i.0_ifconv ]" [core.cpp:39]
+ST_11 : Operation 73 [1/1] (0.00ns)   --->   "%pixConvolved = phi i32 [ 0, %0 ], [ %pixConvolved_1, %._crit_edge.i.i.0_ifconv ]"
+ST_11 : Operation 74 [1/1] (0.00ns)   --->   "%idxRow = phi i32 [ 0, %0 ], [ %idxRow_1, %._crit_edge.i.i.0_ifconv ]"
+ST_11 : Operation 75 [1/1] (0.00ns)   --->   "%col_assign = phi i32 [ 0, %0 ], [ %idxCol_1, %._crit_edge.i.i.0_ifconv ]"
+ST_11 : Operation 76 [1/1] (2.31ns)   --->   "%exitcond4 = icmp eq i15 %idxpixel, -16384" [core.cpp:28]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 77 [1/1] (0.00ns)   --->   "%empty_5 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 16384, i64 16384, i64 16384) nounwind"
+ST_11 : Operation 78 [1/1] (1.94ns)   --->   "%idxpixel_1 = add i15 %idxpixel, 1" [core.cpp:28]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 79 [1/1] (0.00ns)   --->   "br i1 %exitcond4, label %.preheader10.preheader, label %._crit_edge.i.i.0_ifconv" [core.cpp:28]
+ST_11 : Operation 80 [1/1] (0.00ns)   --->   "%tmp_8 = zext i32 %col_assign to i64" [core.cpp:32]
+ST_11 : Operation 81 [1/1] (0.00ns)   --->   "%tmp_4 = trunc i32 %col_assign to i16" [core.cpp:67]
+ST_11 : Operation 82 [1/1] (0.00ns)   --->   "%tmp_5 = trunc i32 %idxRow to i9" [core.cpp:67]
+ST_11 : Operation 83 [1/1] (0.00ns)   --->   "%tmp_11_cast = call i16 @_ssdm_op_BitConcatenate.i16.i9.i7(i9 %tmp_5, i7 0)" [core.cpp:32]
+ST_11 : Operation 84 [1/1] (2.07ns)   --->   "%tmp_s = add i16 %tmp_11_cast, %tmp_4" [core.cpp:32]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 85 [1/1] (0.00ns)   --->   "%tmp_15_cast = sext i16 %tmp_s to i64" [core.cpp:32]
+ST_11 : Operation 86 [1/1] (0.00ns)   --->   "%input_image_addr = getelementptr [16384 x i8]* %input_image, i64 0, i64 %tmp_15_cast" [core.cpp:32]
+ST_11 : Operation 87 [2/2] (3.25ns)   --->   "%pixelin = load i8* %input_image_addr, align 1" [core.cpp:32]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_11 : Operation 88 [1/1] (0.00ns)   --->   "%lineBuff_val_1_addr = getelementptr [128 x i8]* %lineBuff_val_1, i64 0, i64 %tmp_8" [core.cpp:32]
+ST_11 : Operation 89 [2/2] (3.25ns)   --->   "%lineBuff_val_1_load = load i8* %lineBuff_val_1_addr, align 1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:729->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:863->core.cpp:35]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_11 : Operation 90 [1/1] (0.00ns)   --->   "%lineBuff_val_2_addr = getelementptr [128 x i8]* %lineBuff_val_2, i64 0, i64 %tmp_8" [core.cpp:32]
+ST_11 : Operation 91 [2/2] (3.25ns)   --->   "%lineBuff_val_2_load = load i8* %lineBuff_val_2_addr, align 1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:729->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:863->core.cpp:35]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_11 : Operation 92 [1/1] (0.00ns)   --->   "%tmp_9 = call i31 @_ssdm_op_PartSelect.i31.i32.i32.i32(i32 %idxRow, i32 1, i32 31)" [core.cpp:39]
+ST_11 : Operation 93 [1/1] (2.47ns)   --->   "%icmp = icmp sgt i31 %tmp_9, 0" [core.cpp:39]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 94 [1/1] (0.00ns)   --->   "%tmp_10 = call i31 @_ssdm_op_PartSelect.i31.i32.i32.i32(i32 %col_assign, i32 1, i32 31)" [core.cpp:39]
+ST_11 : Operation 95 [1/1] (2.47ns)   --->   "%icmp3 = icmp sgt i31 %tmp_10, 0" [core.cpp:39]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 96 [1/1] (2.47ns)   --->   "%tmp_6 = icmp slt i32 %col_assign, 126" [core.cpp:39]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 97 [1/1] (2.47ns)   --->   "%tmp_7 = icmp slt i32 %idxRow, 126" [core.cpp:39]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 98 [1/1] (0.00ns) (grouped into LUT with out node or_cond6)   --->   "%tmp1 = and i1 %icmp, %icmp3" [core.cpp:39]   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 99 [1/1] (0.00ns) (grouped into LUT with out node or_cond6)   --->   "%tmp2 = and i1 %tmp_6, %tmp_7" [core.cpp:39]   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 100 [1/1] (0.97ns) (out node of the LUT)   --->   "%or_cond6 = and i1 %tmp2, %tmp1" [core.cpp:39]   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 101 [1/1] (2.47ns)   --->   "%tmp_3 = icmp slt i32 %col_assign, 127" [core.cpp:67]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 102 [1/1] (2.55ns)   --->   "%idxCol = add nsw i32 1, %col_assign" [core.cpp:69]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 103 [1/1] (2.55ns)   --->   "%idxRow_2 = add nsw i32 1, %idxRow" [core.cpp:74]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 104 [1/1] (0.69ns)   --->   "%idxRow_1 = select i1 %tmp_3, i32 %idxRow, i32 %idxRow_2" [core.cpp:67]   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+
+ <State 12> : 6.51ns
+ST_12 : Operation 105 [1/2] (3.25ns)   --->   "%pixelin = load i8* %input_image_addr, align 1" [core.cpp:32]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_12 : Operation 106 [1/2] (3.25ns)   --->   "%lineBuff_val_1_load = load i8* %lineBuff_val_1_addr, align 1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:729->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:863->core.cpp:35]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_12 : Operation 107 [1/1] (0.00ns)   --->   "%lineBuff_val_0_addr = getelementptr [128 x i8]* %lineBuff_val_0, i64 0, i64 %tmp_8" [core.cpp:32]
+ST_12 : Operation 108 [1/1] (3.25ns)   --->   "store i8 %lineBuff_val_1_load, i8* %lineBuff_val_0_addr, align 1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:729->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:863->core.cpp:35]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_12 : Operation 109 [1/2] (3.25ns)   --->   "%lineBuff_val_2_load = load i8* %lineBuff_val_2_addr, align 1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:729->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:863->core.cpp:35]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_12 : Operation 110 [1/1] (3.25ns)   --->   "store i8 %lineBuff_val_2_load, i8* %lineBuff_val_1_addr, align 1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:729->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:863->core.cpp:35]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_12 : Operation 111 [1/1] (3.25ns)   --->   "store i8 %pixelin, i8* %lineBuff_val_2_addr, align 1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:765->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:883->core.cpp:36]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+
+ <State 13> : 5.81ns
+ST_13 : Operation 112 [1/1] (0.00ns)   --->   "%tmp_11 = zext i32 %pixConvolved to i64" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_13 : Operation 113 [1/1] (0.00ns)   --->   "%lineBuff_val_0_addr_1 = getelementptr [128 x i8]* %lineBuff_val_0, i64 0, i64 %tmp_11" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_13 : Operation 114 [2/2] (3.25ns)   --->   "%lineBuff_val_0_load = load i8* %lineBuff_val_0_addr_1, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_13 : Operation 115 [1/1] (2.55ns)   --->   "%pixConvolved_2 = add nsw i32 1, %pixConvolved" [core.cpp:47]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 116 [1/1] (0.00ns)   --->   "%tmp_20_0_1 = zext i32 %pixConvolved_2 to i64" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_13 : Operation 117 [1/1] (0.00ns)   --->   "%lineBuff_val_0_addr_2 = getelementptr [128 x i8]* %lineBuff_val_0, i64 0, i64 %tmp_20_0_1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_13 : Operation 118 [2/2] (3.25ns)   --->   "%lineBuff_val_0_load_1 = load i8* %lineBuff_val_0_addr_2, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_13 : Operation 119 [1/1] (2.55ns)   --->   "%col_assign_1_0_2 = add nsw i32 2, %pixConvolved" [core.cpp:47]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 120 [1/1] (0.00ns)   --->   "%lineBuff_val_1_addr_1 = getelementptr [128 x i8]* %lineBuff_val_1, i64 0, i64 %tmp_11" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_13 : Operation 121 [2/2] (3.25ns)   --->   "%lineBuff_val_1_load_1 = load i8* %lineBuff_val_1_addr_1, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_13 : Operation 122 [1/1] (0.00ns)   --->   "%lineBuff_val_1_addr_2 = getelementptr [128 x i8]* %lineBuff_val_1, i64 0, i64 %tmp_20_0_1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_13 : Operation 123 [2/2] (3.25ns)   --->   "%lineBuff_val_1_load_2 = load i8* %lineBuff_val_1_addr_2, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_13 : Operation 124 [1/1] (0.00ns)   --->   "%lineBuff_val_2_addr_1 = getelementptr [128 x i8]* %lineBuff_val_2, i64 0, i64 %tmp_11" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_13 : Operation 125 [2/2] (3.25ns)   --->   "%lineBuff_val_2_load_1 = load i8* %lineBuff_val_2_addr_1, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_13 : Operation 126 [1/1] (0.00ns)   --->   "%lineBuff_val_2_addr_2 = getelementptr [128 x i8]* %lineBuff_val_2, i64 0, i64 %tmp_20_0_1" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_13 : Operation 127 [2/2] (3.25ns)   --->   "%lineBuff_val_2_load_2 = load i8* %lineBuff_val_2_addr_2, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_13 : Operation 128 [1/1] (0.69ns)   --->   "%pixConvolved_1 = select i1 %tmp_3, i32 %pixConvolved_2, i32 0" [core.cpp:67]   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_13 : Operation 129 [1/1] (0.69ns)   --->   "%idxCol_1 = select i1 %tmp_3, i32 %idxCol, i32 0" [core.cpp:67]   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+
+ <State 14> : 7.42ns
+ST_14 : Operation 130 [1/2] (3.25ns)   --->   "%lineBuff_val_0_load = load i8* %lineBuff_val_0_addr_1, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_14 : Operation 131 [1/1] (0.00ns)   --->   "%pix_val = zext i8 %lineBuff_val_0_load to i16" [core.cpp:47]
+ST_14 : Operation 132 [1/1] (4.17ns)   --->   "%window_val_0_0 = mul i16 %tmp_2, %pix_val" [core.cpp:50]   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 4.17> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 133 [1/2] (3.25ns)   --->   "%lineBuff_val_0_load_1 = load i8* %lineBuff_val_0_addr_2, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_14 : Operation 134 [1/1] (0.00ns)   --->   "%tmp_20_0_2 = zext i32 %col_assign_1_0_2 to i64" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_14 : Operation 135 [1/1] (0.00ns)   --->   "%lineBuff_val_0_addr_3 = getelementptr [128 x i8]* %lineBuff_val_0, i64 0, i64 %tmp_20_0_2" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_14 : Operation 136 [2/2] (3.25ns)   --->   "%lineBuff_val_0_load_2 = load i8* %lineBuff_val_0_addr_3, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_14 : Operation 137 [1/2] (3.25ns)   --->   "%lineBuff_val_1_load_1 = load i8* %lineBuff_val_1_addr_1, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_14 : Operation 138 [1/2] (3.25ns)   --->   "%lineBuff_val_1_load_2 = load i8* %lineBuff_val_1_addr_2, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_14 : Operation 139 [1/1] (0.00ns)   --->   "%pix_val_1_1 = zext i8 %lineBuff_val_1_load_2 to i16" [core.cpp:47]
+ST_14 : Operation 140 [1/1] (4.17ns)   --->   "%window_val_1_1 = mul i16 %tmp_24_1_1, %pix_val_1_1" [core.cpp:50]   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 4.17> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 141 [1/1] (0.00ns)   --->   "%lineBuff_val_1_addr_3 = getelementptr [128 x i8]* %lineBuff_val_1, i64 0, i64 %tmp_20_0_2" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_14 : Operation 142 [2/2] (3.25ns)   --->   "%lineBuff_val_1_load_3 = load i8* %lineBuff_val_1_addr_3, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_14 : Operation 143 [1/2] (3.25ns)   --->   "%lineBuff_val_2_load_1 = load i8* %lineBuff_val_2_addr_1, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_14 : Operation 144 [1/2] (3.25ns)   --->   "%lineBuff_val_2_load_2 = load i8* %lineBuff_val_2_addr_2, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_14 : Operation 145 [1/1] (0.00ns)   --->   "%lineBuff_val_2_addr_3 = getelementptr [128 x i8]* %lineBuff_val_2, i64 0, i64 %tmp_20_0_2" [E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47]
+ST_14 : Operation 146 [2/2] (3.25ns)   --->   "%lineBuff_val_2_load_3 = load i8* %lineBuff_val_2_addr_3, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+
+ <State 15> : 7.42ns
+ST_15 : Operation 147 [1/1] (0.00ns)   --->   "%pix_val_0_1 = zext i8 %lineBuff_val_0_load_1 to i16" [core.cpp:47]
+ST_15 : Operation 148 [1/1] (3.36ns)   --->   "%window_val_0_1 = mul i16 %tmp_24_0_1, %pix_val_0_1" [core.cpp:50]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_15 : Operation 149 [1/2] (3.25ns)   --->   "%lineBuff_val_0_load_2 = load i8* %lineBuff_val_0_addr_3, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_15 : Operation 150 [1/2] (3.25ns)   --->   "%lineBuff_val_1_load_3 = load i8* %lineBuff_val_1_addr_3, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_15 : Operation 151 [1/1] (0.00ns)   --->   "%pix_val_2 = zext i8 %lineBuff_val_2_load_1 to i16" [core.cpp:47]
+ST_15 : Operation 152 [1/1] (3.36ns)   --->   "%window_val_2_0 = mul i16 %tmp_24_2, %pix_val_2" [core.cpp:50]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_15 : Operation 153 [1/1] (0.00ns)   --->   "%pix_val_2_1 = zext i8 %lineBuff_val_2_load_2 to i16" [core.cpp:47]
+ST_15 : Operation 154 [1/1] (4.17ns)   --->   "%window_val_2_1 = mul i16 %tmp_24_2_1, %pix_val_2_1" [core.cpp:50]   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 4.17> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 155 [1/2] (3.25ns)   --->   "%lineBuff_val_2_load_3 = load i8* %lineBuff_val_2_addr_3, align 1" [core.cpp:47]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_15 : Operation 156 [1/1] (0.00ns)   --->   "%pix_val_2_2 = zext i8 %lineBuff_val_2_load_3 to i16" [core.cpp:47]
+ST_15 : Operation 157 [1/1] (4.17ns)   --->   "%window_val_2_2 = mul i16 %tmp_24_2_2, %pix_val_2_2" [core.cpp:50]   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 4.17> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 158 [1/1] (3.02ns)   --->   "%tmp3 = add i16 %window_val_2_1, %window_val_2_0" [core.cpp:98->core.cpp:60]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_15 : Operation 159 [1/1] (0.00ns)   --->   "%tmp_13 = trunc i16 %tmp3 to i15" [core.cpp:98->core.cpp:60]
+ST_15 : Operation 160 [1/1] (3.02ns)   --->   "%tmp13 = add i16 %window_val_0_0, %window_val_0_1" [core.cpp:98->core.cpp:60]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_15 : Operation 161 [1/1] (0.00ns)   --->   "%tmp_17 = trunc i16 %tmp13 to i15" [core.cpp:98->core.cpp:60]
+
+ <State 16> : 8.46ns
+ST_16 : Operation 162 [1/1] (0.00ns)   --->   "%pix_val_0_2 = zext i8 %lineBuff_val_0_load_2 to i16" [core.cpp:47]
+ST_16 : Operation 163 [1/1] (3.36ns)   --->   "%window_val_0_2 = mul i16 %tmp_24_0_2, %pix_val_0_2" [core.cpp:50]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_16 : Operation 164 [1/1] (0.00ns)   --->   "%pix_val_1_2 = zext i8 %lineBuff_val_1_load_3 to i16" [core.cpp:47]
+ST_16 : Operation 165 [1/1] (3.36ns)   --->   "%window_val_1_2 = mul i16 %tmp_24_1_2, %pix_val_1_2" [core.cpp:50]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_16 : Operation 166 [1/1] (3.02ns)   --->   "%tmp4 = add i16 %window_val_1_1, %window_val_1_2" [core.cpp:98->core.cpp:60]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_16 : Operation 167 [1/1] (0.00ns)   --->   "%tmp_12 = trunc i16 %tmp4 to i15" [core.cpp:98->core.cpp:60]
+ST_16 : Operation 168 [1/1] (2.07ns)   --->   "%tmp9 = add i16 %tmp3, %tmp4" [core.cpp:98->core.cpp:60]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 169 [1/1] (3.02ns)   --->   "%tmp15 = add i16 %window_val_2_2, %window_val_0_2" [core.cpp:98->core.cpp:60]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+
+ <State 17> : 8.32ns
+ST_17 : Operation 170 [1/1] (0.00ns)   --->   "%pix_val_1 = zext i8 %lineBuff_val_1_load_1 to i16" [core.cpp:47]
+ST_17 : Operation 171 [1/1] (3.36ns)   --->   "%window_val_1_0 = mul i16 %tmp_24_1, %pix_val_1" [core.cpp:50]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_17 : Operation 172 [1/1] (3.02ns)   --->   "%tmp14 = add i16 %window_val_1_0, %tmp15" [core.cpp:98->core.cpp:60]   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_17 : Operation 173 [1/1] (0.00ns)   --->   "%tmp_16 = trunc i16 %tmp14 to i15" [core.cpp:98->core.cpp:60]
+ST_17 : Operation 174 [1/1] (1.94ns)   --->   "%tmp_15 = add i15 %tmp_16, %tmp_17" [core.cpp:98->core.cpp:60]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+ <State 18> : 4.71ns
+ST_18 : Operation 175 [1/1] (0.00ns)   --->   "%tmp_1 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str5) nounwind" [core.cpp:29]
+ST_18 : Operation 176 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str2) nounwind" [core.cpp:30]
+ST_18 : Operation 177 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp12 = add i16 %tmp13, %tmp14" [core.cpp:98->core.cpp:60]   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.93> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_18 : Operation 178 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp_14 = add i15 %tmp_12, %tmp_13" [core.cpp:98->core.cpp:60]   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.93> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_18 : Operation 179 [1/1] (3.90ns) (root node of TernaryAdder)   --->   "%valOutput_1 = add i16 %tmp9, %tmp12" [core.cpp:98->core.cpp:60]   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.93> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_18 : Operation 180 [1/1] (3.87ns) (root node of TernaryAdder)   --->   "%valOutput_1_cast = add i15 %tmp_15, %tmp_14" [core.cpp:60]   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.93> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_18 : Operation 181 [1/1] (0.00ns) (grouped into LUT with out node valOutput_2)   --->   "%tmp_18 = call i1 @_ssdm_op_BitSelect.i1.i16.i32(i16 %valOutput_1, i32 15)" [core.cpp:61]
+ST_18 : Operation 182 [1/1] (0.00ns) (grouped into LUT with out node valOutput_2)   --->   "%p_s = select i1 %tmp_18, i15 0, i15 %valOutput_1_cast" [core.cpp:61]   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_18 : Operation 183 [1/1] (0.00ns) (grouped into LUT with out node valOutput_2)   --->   "%p_cast = zext i15 %p_s to i16" [core.cpp:61]
+ST_18 : Operation 184 [1/1] (0.80ns) (out node of the LUT)   --->   "%valOutput_2 = select i1 %or_cond6, i16 %p_cast, i16 %valOutput" [core.cpp:39]   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_18 : Operation 185 [1/1] (0.00ns)   --->   "%empty_6 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str5, i32 %tmp_1) nounwind" [core.cpp:78]
+ST_18 : Operation 186 [1/1] (0.00ns)   --->   "br label %1" [core.cpp:28]
+
+ <State 19> : 1.77ns
+ST_19 : Operation 187 [1/1] (0.00ns)   --->   "%tmp = trunc i16 %valOutput to i8" [core.cpp:85]
+ST_19 : Operation 188 [1/1] (1.76ns)   --->   "br label %.preheader10" [core.cpp:81]
+
+ <State 20> : 1.92ns
+ST_20 : Operation 189 [1/1] (0.00ns)   --->   "%row = phi i8 [ 0, %.preheader10.preheader ], [ %row_1, %.preheader10.loopexit ]"
+ST_20 : Operation 190 [1/1] (1.55ns)   --->   "%exitcond1 = icmp eq i8 %row, -128" [core.cpp:81]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_20 : Operation 191 [1/1] (0.00ns)   --->   "%empty_7 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 128, i64 128, i64 128) nounwind"
+ST_20 : Operation 192 [1/1] (1.91ns)   --->   "%row_1 = add i8 %row, 1" [core.cpp:81]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_20 : Operation 193 [1/1] (0.00ns)   --->   "br i1 %exitcond1, label %3, label %.preheader.preheader" [core.cpp:81]
+ST_20 : Operation 194 [1/1] (0.00ns)   --->   "%tmp_19 = call i15 @_ssdm_op_BitConcatenate.i15.i8.i7(i8 %row, i7 0)" [core.cpp:81]
+ST_20 : Operation 195 [1/1] (0.00ns)   --->   "%tmp_21_cast = zext i15 %tmp_19 to i16" [core.cpp:83]
+ST_20 : Operation 196 [1/1] (1.76ns)   --->   "br label %.preheader" [core.cpp:83]
+ST_20 : Operation 197 [1/1] (0.00ns)   --->   "ret void" [core.cpp:88]
+
+ <State 21> : 5.20ns
+ST_21 : Operation 198 [1/1] (0.00ns)   --->   "%col = phi i8 [ %col_1, %2 ], [ 0, %.preheader.preheader ]"
+ST_21 : Operation 199 [1/1] (1.55ns)   --->   "%exitcond = icmp eq i8 %col, -128" [core.cpp:83]   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_21 : Operation 200 [1/1] (0.00ns)   --->   "%empty_8 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 128, i64 128, i64 128) nounwind"
+ST_21 : Operation 201 [1/1] (1.91ns)   --->   "%col_1 = add i8 %col, 1" [core.cpp:83]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_21 : Operation 202 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %.preheader10.loopexit, label %2" [core.cpp:83]
+ST_21 : Operation 203 [1/1] (0.00ns)   --->   "%tmp_10_cast = zext i8 %col to i16" [core.cpp:85]
+ST_21 : Operation 204 [1/1] (1.94ns)   --->   "%tmp_20 = add i16 %tmp_21_cast, %tmp_10_cast" [core.cpp:85]   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.94> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_21 : Operation 205 [1/1] (0.00ns)   --->   "%tmp_22_cast = zext i16 %tmp_20 to i64" [core.cpp:85]
+ST_21 : Operation 206 [1/1] (0.00ns)   --->   "%output_image_addr = getelementptr [16384 x i8]* %output_image, i64 0, i64 %tmp_22_cast" [core.cpp:85]
+ST_21 : Operation 207 [1/1] (3.25ns)   --->   "store i8 %tmp, i8* %output_image_addr, align 1" [core.cpp:85]   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 16384> <RAM>
+ST_21 : Operation 208 [1/1] (0.00ns)   --->   "br label %.preheader" [core.cpp:83]
+ST_21 : Operation 209 [1/1] (0.00ns)   --->   "br label %.preheader10"
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 2.32ns
+The critical path consists of the following:
+	'getelementptr' operation ('kernel_addr', core.cpp:50) [16]  (0 ns)
+	'load' operation ('kernel_load', core.cpp:50) on array 'kernel' [17]  (2.32 ns)
+
+ <State 2>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('kernel_load', core.cpp:50) on array 'kernel' [17]  (2.32 ns)
+
+ <State 3>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('kernel_load_1', core.cpp:50) on array 'kernel' [20]  (2.32 ns)
+
+ <State 4>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('kernel_load_2', core.cpp:50) on array 'kernel' [23]  (2.32 ns)
+
+ <State 5>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('kernel_load_3', core.cpp:50) on array 'kernel' [26]  (2.32 ns)
+
+ <State 6>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('kernel_load_4', core.cpp:50) on array 'kernel' [29]  (2.32 ns)
+
+ <State 7>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('kernel_load_5', core.cpp:50) on array 'kernel' [32]  (2.32 ns)
+
+ <State 8>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('kernel_load_6', core.cpp:50) on array 'kernel' [35]  (2.32 ns)
+
+ <State 9>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('kernel_load_7', core.cpp:50) on array 'kernel' [38]  (2.32 ns)
+
+ <State 10>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('kernel_load_8', core.cpp:50) on array 'kernel' [41]  (2.32 ns)
+
+ <State 11>: 5.33ns
+The critical path consists of the following:
+	'phi' operation ('idxRow') with incoming values : ('idxRow', core.cpp:67) [48]  (0 ns)
+	'add' operation ('tmp_s', core.cpp:32) [61]  (2.08 ns)
+	'getelementptr' operation ('input_image_addr', core.cpp:32) [63]  (0 ns)
+	'load' operation ('pixelin', core.cpp:32) on array 'input_image' [64]  (3.25 ns)
+
+ <State 12>: 6.51ns
+The critical path consists of the following:
+	'load' operation ('pixelin', core.cpp:32) on array 'input_image' [64]  (3.25 ns)
+	'store' operation (E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:765->E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:883->core.cpp:36) of variable 'pixelin', core.cpp:32 on array 'lineBuff.val[2]', core.cpp:13 [72]  (3.25 ns)
+
+ <State 13>: 5.81ns
+The critical path consists of the following:
+	'add' operation ('pixConvolved', core.cpp:47) [87]  (2.55 ns)
+	'getelementptr' operation ('lineBuff_val_1_addr_2', E:/Program/Xilinx/Vivado/2018.1/common/technology/autopilot/hls/hls_video_mem.h:835->core.cpp:47) [103]  (0 ns)
+	'load' operation ('lineBuff_val_1_load_2', core.cpp:47) on array 'lineBuff.val[1]', core.cpp:13 [104]  (3.25 ns)
+
+ <State 14>: 7.42ns
+The critical path consists of the following:
+	'load' operation ('lineBuff_val_0_load', core.cpp:47) on array 'lineBuff.val[0]', core.cpp:13 [84]  (3.25 ns)
+	'mul' operation ('window.val[0][0]', core.cpp:50) [86]  (4.17 ns)
+
+ <State 15>: 7.42ns
+The critical path consists of the following:
+	'load' operation ('lineBuff_val_2_load_3', core.cpp:47) on array 'lineBuff.val[2]', core.cpp:13 [120]  (3.25 ns)
+	'mul' operation ('window.val[2][2]', core.cpp:50) [122]  (4.17 ns)
+
+ <State 16>: 8.46ns
+The critical path consists of the following:
+	'mul' operation ('window.val[1][2]', core.cpp:50) [110]  (3.36 ns)
+	'add' operation ('tmp4', core.cpp:98->core.cpp:60) [124]  (3.02 ns)
+	'add' operation ('tmp9', core.cpp:98->core.cpp:60) [127]  (2.08 ns)
+
+ <State 17>: 8.32ns
+The critical path consists of the following:
+	'mul' operation ('window.val[1][0]', core.cpp:50) [102]  (3.36 ns)
+	'add' operation ('tmp14', core.cpp:98->core.cpp:60) [130]  (3.02 ns)
+	'add' operation ('tmp_15', core.cpp:98->core.cpp:60) [135]  (1.94 ns)
+
+ <State 18>: 4.71ns
+The critical path consists of the following:
+	'add' operation ('tmp12', core.cpp:98->core.cpp:60) [133]  (0 ns)
+	'add' operation ('valOutput', core.cpp:98->core.cpp:60) [136]  (3.9 ns)
+	'select' operation ('p_s', core.cpp:61) [139]  (0 ns)
+	'select' operation ('valOutput_2', core.cpp:39) [141]  (0.805 ns)
+
+ <State 19>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('row') with incoming values : ('row', core.cpp:81) [154]  (1.77 ns)
+
+ <State 20>: 1.92ns
+The critical path consists of the following:
+	'phi' operation ('row') with incoming values : ('row', core.cpp:81) [154]  (0 ns)
+	'add' operation ('row', core.cpp:81) [157]  (1.92 ns)
+
+ <State 21>: 5.2ns
+The critical path consists of the following:
+	'phi' operation ('col') with incoming values : ('col', core.cpp:83) [164]  (0 ns)
+	'add' operation ('tmp_20', core.cpp:85) [171]  (1.94 ns)
+	'getelementptr' operation ('output_image_addr', core.cpp:85) [173]  (0 ns)
+	'store' operation (core.cpp:85) of variable 'tmp', core.cpp:85 on array 'output_image' [174]  (3.25 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
