@@ -12,8 +12,7 @@ class Package:
         self.target = target
         self.deadline = deadline
         self.package_id = package_id
-        # Initialize status as 'None' - will be set to 'waiting' when start_time is reached
-        self.status = 'None'  # Possible statuses: 'None', 'waiting', 'in_transit', 'delivered'
+        self.status = 'None' # Possible statuses: 'waiting', 'in_transit', 'delivered'
 
 class Environment: 
 
@@ -120,13 +119,7 @@ class Environment:
         for i in range(self.n_packages):
             start_time, start, target, deadline = list_packages[i]
             package_id = i+1
-            package = Package(start, start_time, target, deadline, package_id)
-            
-            # Set the initial status - 'waiting' for packages that start at time 0
-            if start_time == 0:
-                package.status = 'waiting'
-                
-            self.packages.append(package)
+            self.packages.append(Package(start, start_time, target, deadline, package_id))
 
         return self.get_state()
     
@@ -136,16 +129,11 @@ class Environment:
         The state includes the positions of robots and packages.
         :return: State representation.
         """
-        # Activate new packages that are starting at the current timestep
+        selected_packages = []
         for i in range(len(self.packages)):
             if self.packages[i].start_time == self.t:
+                selected_packages.append(self.packages[i])
                 self.packages[i].status = 'waiting'
-        
-        # Include all active packages (waiting or in transit)
-        active_packages = []
-        for pkg in self.packages:
-            if pkg.status in ['waiting', 'in_transit'] and pkg.start_time <= self.t:
-                active_packages.append(pkg)
 
         state = {
             'time_step': self.t,
@@ -153,9 +141,8 @@ class Environment:
             'robots': [(robot.position[0] + 1, robot.position[1] + 1,
                         robot.carrying) for robot in self.robots],
             'packages': [(package.package_id, package.start[0] + 1, package.start[1] + 1, 
-                          package.target[0] + 1, package.target[1] + 1, package.start_time, package.deadline) for package in active_packages]
+                          package.target[0] + 1, package.target[1] + 1, package.start_time, package.deadline) for package in selected_packages]
         }
-        
         return state
         
 
@@ -369,8 +356,9 @@ class Environment:
         for row in grid_copy:
             print('\t'.join(str(cell) for cell in row))
         
+
 if __name__=="__main__":
-    env = Environment('marl-delivery/map1.txt', 10, 2, 5)
+    env = Environment('map.txt', 10, 2, 5)
     state = env.reset()
     print("Initial State:", state)
     print("Initial State:")
@@ -404,3 +392,4 @@ if __name__=="__main__":
         t += 1
         if t == 100:
             break
+    
